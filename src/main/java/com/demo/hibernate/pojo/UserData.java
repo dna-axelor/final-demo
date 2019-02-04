@@ -1,7 +1,5 @@
 package com.demo.hibernate.pojo;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -55,13 +53,7 @@ public class UserData {
 		this.email = email;
 	}
 
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
+	
 
 	public String getCity() {
 		return city;
@@ -83,8 +75,15 @@ public class UserData {
 	@Column
 	private String email;
 	@Column
-	@Temporal(TemporalType.DATE)
-	private Date birthday;
+	private String birthday;
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
 	@Column
 	private String city;
 

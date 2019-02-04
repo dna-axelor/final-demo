@@ -1,7 +1,5 @@
 package com.demo.guice.tester;
 
-import java.util.Date;
-
 import javax.ws.rs.core.Response;
 
 import org.hibernate.Session;
@@ -16,7 +14,7 @@ public class UserImplementation implements UserMethodAbstract {
 
 	private static SessionFactory factory;
 
-	public Response saveEmp(String name, long mobile, String address, Date birthday, String email, String city,
+	public Response saveEmp(String name, long mobile, String address, String birthday, String email, String city,
 			UserFormPojo form) {
 
 		UserData user = new UserData();

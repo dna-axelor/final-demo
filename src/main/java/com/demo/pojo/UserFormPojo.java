@@ -1,7 +1,5 @@
 package com.demo.pojo;
 
-import java.util.Date;
-
 import javax.ws.rs.FormParam;
 
 public class UserFormPojo {
@@ -30,14 +28,6 @@ public class UserFormPojo {
 		this.address = address;
 	}
 
-	public Date getBirthday() {
-		return birthday;
-	}
-
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -61,7 +51,16 @@ public class UserFormPojo {
 	@FormParam("address")
 	private String address;
 	@FormParam("birthday")
-	private Date birthday;
+	private String birthday;
+
+	public String getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
+	}
+
 	@FormParam("email")
 	private String email;
 	@FormParam("city")

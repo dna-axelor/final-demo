@@ -1,7 +1,5 @@
 package com.demo.guice.tester;
 
-import java.util.Date;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -22,7 +20,7 @@ public class UserService {
 		this.abs = abs;
 	}
 
-	public Response saveEmp(String name, long mobile, String address, Date birthday, String email, String city,
+	public Response saveEmp(String name, long mobile, String address, String birthday, String email, String city,
 			UserFormPojo form) {
 
 		return abs.saveEmp(name, mobile, address, birthday, email, city, form);

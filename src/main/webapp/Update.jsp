@@ -1,8 +1,14 @@
+<%@page import="com.demo.hibernate.pojo.UserData"%>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.List"%>
+<%@page import="com.demo.dao.DemoDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Update</title>
 <style>
 table {
 	border-collapse: collapse;
@@ -83,11 +89,19 @@ a:hover, a:active {
 	background-color: red;
 }
 </style>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Registration Form</title>
 </head>
 <body>
-	<form method="POST" action="/final-demo/employee/manage/save">
+	<%
+		DemoDao dd = new DemoDao();
+		int n = Integer.parseInt(request.getParameter("id"));
+		List results = dd.get(n);
+
+		for (Iterator iterator = results.iterator(); iterator.hasNext();) {
+
+			UserData user = (UserData) iterator.next();
+	%>
+
+	<form method="GET" action="http://localhost:8080/final-demo/update_save.jsp">
 		<table border="5" align="center">
 
 			<tr>
@@ -96,36 +110,42 @@ a:hover, a:active {
 
 			</tr>
 			<tr>
+			<td>Id:</td>
+			<td><input type="text" name="id" value="<%=user.getId()%>" readonly/></td>
+			</tr>
+			
+			<tr>
 				<td>Name:</td>
-				<td><input type="text" name="name" /></td>
+				<td><input type="text" name="name" value="<%=user.getName()%>"/></td>
 			</tr>
 
 			<tr>
 				<td>Mobile:</td>
 				<td><input type="tel" name="mobile" pattern="[6789][0-9]{9}"
-					placeholder="10-Digit Mobile Number" /></td>
+					placeholder="10-Digit Mobile Number" value="<%=user.getMobile()%>"/></td>
 			</tr>
 
 			<tr>
 				<td>Address:</td>
-				<td><textarea rows="10" cols="30" name="address"></textarea></td>
+				<td><textarea rows="10" cols="30" name="address"><%=user.getAddress()%></textarea></td>
 			</tr>
 
 			<tr>
 				<td>Email:</td>
-				<td><input type="email" name="email" placeholder="name@example.com"/></td>
+				<td><input type="email" name="email"
+					placeholder="name@example.com" value="<%=user.getEmail()%>"/></td>
 			</tr>
 
 			<tr>
 				<td>City:</td>
-				<td><input type="text" name="city" /></td>
+				<td><input type="text" name="city" value="<%=user.getCity()%>"/></td>
 			</tr>
 
 			<tr>
 				<td>D.O.B:</td>
 				<td><input type="text" name="birthday"
 					pattern="[0-9]{4}/(0[1-9]|1[012])/(0[1-9]|1[0-9]|2[0-9]|3[01]))"
-					placeholder="YYYY/MM/DD" /></td>
+					placeholder="YYYY/MM/DD" value="<%=user.getBirthday()%>"/></td>
 			</tr>
 
 			<tr>
@@ -137,5 +157,8 @@ a:hover, a:active {
 
 
 	</form>
+	<%
+		}
+	%>
 </body>
 </html>

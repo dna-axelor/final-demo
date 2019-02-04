@@ -1,7 +1,5 @@
 package com.demo.guice.tester;
 
-import java.util.Date;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.POST;
@@ -32,7 +30,7 @@ public class GuiceTester {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Formatted
 	public Response saveEmp(@FormParam("name") String name, @FormParam("mobile") long mobile,
-			@FormParam("address") String address, @FormParam("birthday") Date birthday,
+			@FormParam("address") String address, @FormParam("birthday") String birthday,
 			@FormParam("email") String email, @FormParam("city") String city, @Form UserFormPojo form) {
 
 		return user.saveEmp(name, mobile, address, birthday, email, city, form);
